@@ -22,3 +22,15 @@ CREATE TABLE public.post (
 
 COMMENT ON TABLE public.post IS
 'Forum posts written by a user.';
+
+
+/*Create post table in public schema*/
+CREATE TABLE public.website (
+    id SERIAL PRIMARY KEY,
+    title TEXT,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    post_id INTEGER NOT NULL REFERENCES public.post(id)
+);
+
+COMMENT ON TABLE public.post IS
+'Website where the post is published.';
